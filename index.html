@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Code Lab · Portal</title>
+  <meta name="description" content="Portal central del taller de programación">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <link rel="stylesheet" href="css/estilos.css">
+  <!-- El orden importa: config → contenido → lógica -->
+  <script src="js/config.js" defer></script>
+  <script src="js/sesiones.js" defer></script>
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <div id="banner-profe" class="banner-profe" hidden></div>
+
+  <header class="cabecera">
+    <div class="marca"><span class="marca-rayo">⚡</span> <span id="nombre-taller">CODE LAB</span></div>
+    <div class="xp" aria-label="Progreso del taller">
+      <div class="xp-texto"><span id="xp-sesion">Sesión 1</span> de 9</div>
+      <div class="xp-barra"><div id="xp-relleno" class="xp-relleno"></div></div>
+    </div>
+    <div class="sprint">
+      <button id="sprint-btn" class="btn-sprint" type="button" title="Temporizador de concentración">⏱ Sprint</button>
+      <div id="sprint-opciones" class="sprint-opciones" hidden>
+        <button type="button" data-min="5">5 min</button>
+        <button type="button" data-min="10">10 min</button>
+        <button type="button" data-min="15">15 min</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="contenedor">
+    <!-- La misión: hoy, o una pasada en modo repaso -->
+    <section id="mision" class="mision" aria-live="polite"></section>
+
+    <section class="bloque">
+      <h2 class="bloque-titulo">🗺️ Mapa de misiones</h2>
+      <div id="mapa" class="mapa"></div>
+    </section>
+
+    <section id="zona" class="bloque zona" hidden>
+      <h2 class="bloque-titulo">🚀 Zona Autónoma <span class="etiqueta">¿Has acabado? ¡Sigue tú!</span></h2>
+      <div class="pestanas" role="tablist">
+        <button type="button" role="tab" data-tab="retos" class="pestana activa">🏆 Retos extra</button>
+        <button type="button" role="tab" data-tab="atajos" class="pestana">⌨️ Atajos</button>
+        <button type="button" role="tab" data-tab="investiga" class="pestana">🔬 Investiga</button>
+      </div>
+      <div id="zona-contenido" class="zona-contenido"></div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <span>Los ordenadores se borran al apagar: <strong>guarda siempre tu enlace</strong> 💾</span>
+    <button id="abrir-profe" class="btn-profe" type="button" title="Panel del profe">🔧</button>
+  </footer>
+
+  <dialog id="dialogo-profe" class="dialogo"></dialog>
+  <div id="celebracion" class="celebracion" hidden></div>
+</body>
+</html>
