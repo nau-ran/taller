@@ -10,7 +10,7 @@ window.PORTAL_CONFIG = {
 
   // "manual"     → manda `sesionActiva` (la cambias tú cada día).
   // "calendario" → se desbloquea sola el día que pongas en `calendario`.
-  modo: "manual",
+  modo: "calendario",
 
   // La sesión de HOY (1-9). Solo se usa en modo "manual".
   sesionActiva: 1,
@@ -18,15 +18,15 @@ window.PORTAL_CONFIG = {
   // Solo en modo "calendario": fecha (AAAA-MM-DD) en que se abre cada sesión.
   // Antes del día 1 se ve la 1 como «hoy» para que nunca salga vacío.
   calendario: {
-    1: "2026-11-04",
-    2: "2026-11-11",
-    3: "2026-11-18",
-    4: "2026-11-25",
-    5: "2026-12-02",
-    6: "2026-12-09",
-    7: "2026-12-16",
-    8: "2027-01-13",
-    9: "2027-01-20",
+    1: "2027-01-14",
+    2: "2027-01-21",
+    3: "2027-01-28",
+    4: "2027-02-04",
+    5: "2027-02-11",
+    6: "2027-02-18",
+    7: "2027-02-25",
+    8: "2027-03-04",
+    9: "2027-03-11",
   },
 
   // Sesiones pasadas: "visibles" (repaso) | "ocultas" (foco total).
