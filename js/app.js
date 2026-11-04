@@ -7,6 +7,7 @@
   const SESIONES = window.SESIONES;
   const ZONA = window.ZONA_AUTONOMA;
   const TOTAL = SESIONES.length;
+  const { t, tx } = window.I18N;
 
   // localStorage puede fallar (modo incógnito, aula bloqueada): nunca rompe la página.
   const almacen = {
@@ -79,7 +80,7 @@
         onclick: () => marcarPaso(n, i),
       },
         h("span", { class: "paso-num" }, hechos.includes(i) ? "✓" : String(i + 1)),
-        h("span", { class: "paso-texto" }, texto),
+        h("span", { class: "paso-texto" }, tx(texto)),
       ));
 
     const completa = hechos.length === s.pasos.length;
@@ -88,24 +89,24 @@
       h("div", { class: "mision-cabecera" },
         h("div", { class: "mision-icono", "aria-hidden": "true" }, s.icono),
         h("div", null,
-          h("div", { class: "mision-etiqueta" }, enRepaso ? `🔁 REPASO · SESIÓN ${n}` : `🎯 MISIÓN DE HOY · SESIÓN ${n}`),
-          h("h1", { class: "mision-titulo" }, s.titulo),
-          h("div", { class: "mision-plataforma" }, s.plataforma),
+          h("div", { class: "mision-etiqueta" }, enRepaso ? t("repaso", n) : t("misionHoy", n)),
+          h("h1", { class: "mision-titulo" }, tx(s.titulo)),
+          h("div", { class: "mision-plataforma" }, tx(s.plataforma)),
         ),
-        enRepaso && h("button", { type: "button", class: "btn-volver", onclick: () => { enRepaso = null; pintarTodo(); } }, "← Volver a hoy"),
+        enRepaso && h("button", { type: "button", class: "btn-volver", onclick: () => { enRepaso = null; pintarTodo(); } }, t("volverHoy")),
       ),
-      h("p", { class: "mision-objetivo" }, s.objetivo),
+      h("p", { class: "mision-objetivo" }, tx(s.objetivo)),
       h("div", { class: "botones" },
         s.botones.map((b) => h("a", {
           class: "btn-gigante" + (b.secundario ? " secundario" : ""),
           href: b.url, target: "_blank", rel: "noopener",
-        }, h("span", { "aria-hidden": "true" }, b.icono), b.texto, h("span", { class: "flecha" }, "↗")))),
+        }, h("span", { "aria-hidden": "true" }, b.icono), tx(b.texto), h("span", { class: "flecha" }, "↗")))),
       h("div", { class: "pasos" }, pasos),
-      completa && h("div", { class: "completa" }, "🏅 ¡MISIÓN COMPLETA! Pasa al reto extra 👇"),
-      s.nota && h("div", { class: "aviso nota" }, h("strong", null, "ℹ️ "), s.nota),
+      completa && h("div", { class: "completa" }, t("completa")),
+      s.nota && h("div", { class: "aviso nota" }, h("strong", null, "ℹ️ "), tx(s.nota)),
       h("div", { class: "extras" },
-        h("div", { class: "aviso guardar" }, h("strong", null, "💾 Antes de irte: "), s.guardar),
-        h("div", { class: "aviso reto" }, h("strong", null, "🏆 Reto extra: "), s.reto),
+        h("div", { class: "aviso guardar" }, h("strong", null, t("antesDeIrte")), tx(s.guardar)),
+        h("div", { class: "aviso reto" }, h("strong", null, t("retoExtra")), tx(s.reto)),
       ),
     ].filter(Boolean));
   }
@@ -140,7 +141,7 @@
       if (estado === "oculta") return null;
       if (estado === "bloqueada") {
         // No metemos el título en el DOM: el misterio también es motivación.
-        return h("div", { class: "tarjeta bloqueada", "aria-label": `Sesión ${s.n}: bloqueada` },
+        return h("div", { class: "tarjeta bloqueada", "aria-label": t("bloqueada", s.n) },
           h("div", { class: "tarjeta-num" }, s.n),
           h("div", { class: "tarjeta-icono" }, "🔒"),
           h("div", { class: "tarjeta-titulo" }, "???"),
@@ -155,8 +156,8 @@
       },
         h("div", { class: "tarjeta-num" }, s.n),
         h("div", { class: "tarjeta-icono" }, s.icono),
-        h("div", { class: "tarjeta-titulo" }, s.titulo),
-        h("div", { class: "tarjeta-sub" }, esHoy ? "▶ HOY" : "✓ Repasar"),
+        h("div", { class: "tarjeta-titulo" }, tx(s.titulo)),
+        h("div", { class: "tarjeta-sub" }, esHoy ? t("hoy") : t("repasar")),
       );
     });
     document.getElementById("mapa").replaceChildren(...tarjetas.filter(Boolean));
@@ -177,16 +178,16 @@
     if (pestana === "retos") {
       items = ZONA.retos.map((r) => h("div", { class: "mini" },
         h("div", { class: "mini-icono" }, r.icono),
-        h("div", { class: "mini-texto" }, r.texto),
-        h("div", { class: "nivel", title: `Dificultad ${r.nivel}` }, "⭐".repeat(r.nivel))));
+        h("div", { class: "mini-texto" }, tx(r.texto)),
+        h("div", { class: "nivel", title: t("dificultad", r.nivel) }, "⭐".repeat(r.nivel))));
     } else if (pestana === "atajos") {
       items = ZONA.atajos.map((a) => h("div", { class: "mini" },
-        h("div", { class: "teclas" }, a.teclas.map((t) => h("kbd", null, t))),
-        h("div", { class: "mini-texto" }, a.texto)));
+        h("div", { class: "teclas" }, a.teclas.map((k) => h("kbd", null, tx(k)))),
+        h("div", { class: "mini-texto" }, tx(a.texto))));
     } else {
       items = ZONA.investiga.map((r) => h("div", { class: "mini" },
         h("div", { class: "mini-icono" }, r.icono),
-        h("div", { class: "mini-texto" }, r.texto)));
+        h("div", { class: "mini-texto" }, tx(r.texto))));
     }
     document.getElementById("zona-contenido").replaceChildren(...items);
   }
@@ -195,7 +196,7 @@
   function pintarCabecera() {
     document.getElementById("nombre-taller").textContent = CFG.nombreTaller;
     const n = sesionDeHoy();
-    document.getElementById("xp-sesion").textContent = `Sesión ${n}`;
+    document.getElementById("xp-sesion").textContent = t("sesion", n);
     document.getElementById("xp-relleno").style.width = (n / TOTAL) * 100 + "%";
 
     const vp = vistaProfe();
@@ -203,13 +204,30 @@
     banner.hidden = !vp;
     if (vp) {
       banner.replaceChildren(
-        `👁 VISTA PREVIA DEL PROFE (solo en este navegador): sesión ${vp.sesion}. `,
-        h("button", { type: "button", onclick: () => { almacen.escribir("profe.vista", null); pintarTodo(); } }, "Quitar"),
+        t("vistaPrevia", vp.sesion),
+        h("button", { type: "button", onclick: () => { almacen.escribir("profe.vista", null); pintarTodo(); } }, t("quitar")),
       );
     }
   }
 
+  // Lo que está escrito en index.html: data-t (texto), data-t-title, data-t-aria y
+  // data-t-content (atributos). Y el botón CA | ES.
+  function pintarEstaticos() {
+    document.documentElement.lang = window.I18N.idioma();
+    for (const el of document.querySelectorAll("[data-t]")) el.textContent = t(el.dataset.t);
+    for (const el of document.querySelectorAll("[data-t-title]")) el.title = t(el.dataset.tTitle);
+    for (const el of document.querySelectorAll("[data-t-aria]")) el.setAttribute("aria-label", t(el.dataset.tAria));
+    for (const el of document.querySelectorAll("[data-t-content]")) el.setAttribute("content", t(el.dataset.tContent));
+    for (const b of document.querySelectorAll("#idiomas [data-idioma]")) {
+      const puesto = b.dataset.idioma === window.I18N.idioma();
+      b.setAttribute("aria-pressed", String(puesto));
+      if (puesto) b.removeAttribute("title");
+      else b.title = t("cambiarA");
+    }
+  }
+
   function pintarTodo() {
+    pintarEstaticos();
     pintarCabecera();
     pintarMision();
     pintarMapa();
@@ -236,7 +254,7 @@
     if (resta === 0) {
       clearInterval(sprintTimer);
       sprintFin = null;
-      btn.textContent = "✅ ¡Tiempo! Estira 30 s";
+      btn.textContent = t("tiempo");
       btn.classList.remove("corriendo");
       btn.classList.add("fin");
       setTimeout(() => { btn.textContent = "⏱ Sprint"; btn.classList.remove("fin"); }, 30000);
@@ -262,20 +280,20 @@
   // ── Panel del profe ──────────────────────────────────────────
   function abrirPanelProfe() {
     const dlg = document.getElementById("dialogo-profe");
-    const cerrar = h("button", { type: "button", class: "dialogo-cerrar", onclick: () => dlg.close(), "aria-label": "Cerrar" }, "✕");
+    const cerrar = h("button", { type: "button", class: "dialogo-cerrar", onclick: () => dlg.close(), "aria-label": t("cerrar") }, "✕");
 
-    const entrada = h("input", { type: "password", class: "campo", placeholder: "Clave del profe", autocomplete: "off" });
+    const entrada = h("input", { type: "password", class: "campo", placeholder: t("claveProfe"), autocomplete: "off" });
     const error = h("div", { class: "error" });
     const entrar = () => {
       if (entrada.value === CFG.claveProfe) pintarPanel(dlg, cerrar);
-      else { error.textContent = "Clave incorrecta"; entrada.select(); }
+      else { error.textContent = t("claveIncorrecta"); entrada.select(); }
     };
     entrada.addEventListener("keydown", (e) => { if (e.key === "Enter") entrar(); });
 
     dlg.replaceChildren(cerrar,
-      h("h2", null, "🔧 Panel del profe"),
+      h("h2", null, t("tituloPanel")),
       entrada,
-      h("button", { type: "button", class: "btn-gigante", onclick: entrar }, "Entrar"),
+      h("button", { type: "button", class: "btn-gigante", onclick: entrar }, t("entrar")),
       error);
     dlg.showModal();
     entrada.focus();
@@ -287,7 +305,7 @@
     const elegida = vp?.sesion ?? publicada;
     const pasadas = vp?.pasadas ?? CFG.pasadas;
     const linea = CFG.modo === "calendario"
-      ? `modo: "calendario" → hoy toca la ${publicada} según las fechas.`
+      ? t("lineaCalendario", publicada)
       : `sesionActiva: ${publicada}`;
 
     const aplicar = (cambios) => {
@@ -301,16 +319,16 @@
     const copiar = h("button", {
       type: "button", class: "btn-chico",
       onclick: async (e) => {
-        try { await navigator.clipboard.writeText(nuevaLinea); e.target.textContent = "¡Copiado!"; }
-        catch { e.target.textContent = "Cópialo a mano"; }
+        try { await navigator.clipboard.writeText(nuevaLinea); e.target.textContent = t("copiado"); }
+        catch { e.target.textContent = t("copiaAMano"); }
       },
-    }, "Copiar");
+    }, t("copiar"));
 
     dlg.replaceChildren(cerrar,
-      h("h2", null, "🔧 Panel del profe"),
-      h("p", { class: "panel-info" }, "Publicado para toda la clase: ", h("code", null, linea)),
+      h("h2", null, t("tituloPanel")),
+      h("p", { class: "panel-info" }, t("publicado"), h("code", null, linea)),
 
-      h("h3", null, "1 · Vista previa (solo este ordenador)"),
+      h("h3", null, t("paso1")),
       h("div", { class: "selector" }, SESIONES.map((s) =>
         h("button", {
           type: "button", class: "sel" + (s.n === elegida ? " activa" : ""),
@@ -318,17 +336,17 @@
         }, `${s.icono} ${s.n}`))),
       h("label", { class: "interruptor" },
         h("input", { type: "checkbox", checked: pasadas === "visibles", onchange: (e) => aplicar({ pasadas: e.target.checked ? "visibles" : "ocultas" }) }),
-        " Mostrar sesiones pasadas (repaso)"),
+        t("mostrarPasadas")),
 
-      h("h3", null, "2 · Publicarlo para TODOS los ordenadores"),
+      h("h3", null, t("paso2")),
       h("ol", { class: "panel-pasos" },
-        h("li", null, "Abre config.js en GitHub: ",
-          h("a", { href: CFG.editarConfigUrl, target: "_blank", rel: "noopener" }, "editar ✏️")),
-        h("li", null, "Pon ", h("code", null, nuevaLinea), " ", copiar),
-        h("li", null, "«Commit changes». En ~1 min, recargad (F5)."),
+        h("li", null, t("abreConfig"),
+          h("a", { href: CFG.editarConfigUrl, target: "_blank", rel: "noopener" }, t("editar"))),
+        h("li", null, t("pon"), h("code", null, nuevaLinea), " ", copiar),
+        h("li", null, t("commit")),
       ),
-      h("p", { class: "panel-info" }, "Truco: con modo \"calendario\" no tienes que tocar nada cada día."),
-      vp && h("button", { type: "button", class: "btn-gigante secundario", onclick: () => { almacen.escribir("profe.vista", null); pintarTodo(); dlg.close(); } }, "Salir de la vista previa"),
+      h("p", { class: "panel-info" }, t("truco")),
+      vp && h("button", { type: "button", class: "btn-gigante secundario", onclick: () => { almacen.escribir("profe.vista", null); pintarTodo(); dlg.close(); } }, t("salirVista")),
     );
   }
 
@@ -338,6 +356,15 @@
       b.addEventListener("click", () => { pestana = b.dataset.tab; pintarZona(); });
     }
     document.getElementById("abrir-profe").addEventListener("click", abrirPanelProfe);
+    // CA | ES: se repinta todo. El panel del profe abierto se cierra (se vuelve a abrir con 🔧).
+    for (const b of document.querySelectorAll("#idiomas [data-idioma]")) {
+      b.addEventListener("click", () => {
+        if (!window.I18N.fijar(b.dataset.idioma)) return;
+        const dlg = document.getElementById("dialogo-profe");
+        if (dlg.open) dlg.close();
+        pintarTodo();
+      });
+    }
     if (new URLSearchParams(location.search).has("profe")) abrirPanelProfe();
     prepararSprint();
     pintarTodo();

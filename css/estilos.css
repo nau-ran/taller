@@ -74,6 +74,19 @@ button { font: inherit; color: inherit; cursor: pointer; }
 }
 
 .sprint { position: relative; margin-left: auto; }
+/* CA | ES: el que está puesto, encendido. */
+.idiomas {
+  display: inline-flex; border: 1px solid var(--borde); border-radius: 99px; overflow: hidden;
+  background: var(--panel);
+}
+.idiomas button {
+  min-width: 44px; min-height: 40px; padding: 8px 12px; border: 0; background: none;
+  color: var(--suave); font: 800 14px/1 ui-monospace, "Cascadia Code", Consolas, monospace; letter-spacing: .06em;
+}
+.idiomas button[aria-pressed="true"] { background: var(--cian); color: var(--fondo); }
+.idiomas button:not([aria-pressed="true"]):hover { color: var(--texto); }
+/* El contenedor recorta lo que sale: el foco, por dentro y en otro color que el encendido. */
+.idiomas button:focus-visible { outline: 3px solid var(--magenta); outline-offset: -3px; }
 .btn-sprint {
   padding: 10px 18px; border-radius: 99px; border: 1px solid var(--borde);
   background: var(--panel); font-weight: 700; font-variant-numeric: tabular-nums;
