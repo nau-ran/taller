@@ -105,7 +105,8 @@
       completa && h("div", { class: "completa" }, t("completa")),
       s.nota && h("div", { class: "aviso nota" }, h("strong", null, "ℹ️ "), tx(s.nota)),
       h("div", { class: "extras" },
-        h("div", { class: "aviso guardar" }, h("strong", null, t("antesDeIrte")), tx(s.guardar)),
+        h("div", { class: "aviso guardar" }, h("strong", null, t("antesDeIrte")), tx(s.guardar),
+          h("br"), h("a", { class: "enlace-correo", href: "#correo" }, t("comoCorreo"))),
         h("div", { class: "aviso reto" }, h("strong", null, t("retoExtra")), tx(s.reto)),
       ),
     ].filter(Boolean));
@@ -192,6 +193,20 @@
     document.getElementById("zona-contenido").replaceChildren(...items);
   }
 
+  // ── Guardar en el correo ─────────────────────────────────────
+  // Siempre funciona, con o sin carpeta: dos casos, archivo o enlace, paso a paso.
+  function pintarCorreo() {
+    const caso = (titulo, pasos, casa) => h("div", { class: "correo-caso" },
+      h("h3", null, t(titulo)),
+      h("ol", null, t(pasos).map((p) => h("li", null, p))),
+      h("p", { class: "correo-casa" }, t(casa)));
+    document.getElementById("correo-contenido").replaceChildren(
+      caso("correoArchivo", "pasosArchivo", "casaArchivo"),
+      caso("correoEnlace", "pasosEnlace", "casaEnlace"),
+      h("p", { class: "correo-salir" }, t("correoSalir")),
+    );
+  }
+
   // ── Cabecera: barra de XP ────────────────────────────────────
   function pintarCabecera() {
     document.getElementById("nombre-taller").textContent = CFG.nombreTaller;
@@ -231,6 +246,7 @@
     pintarCabecera();
     pintarMision();
     pintarMapa();
+    pintarCorreo();
     pintarZona();
   }
 

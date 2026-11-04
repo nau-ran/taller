@@ -10,16 +10,16 @@ const ARCADE = { texto: { ca: "Obre MakeCode Arcade", es: "Abrir MakeCode Arcade
 const MC_MAKECODE = { texto: { ca: "Tutorials MakeCode Minecraft", es: "Tutoriales MakeCode Minecraft" }, url: "https://minecraft.makecode.com/", icono: "📘", secundario: true };
 
 const GUARDAR_SCRATCH = {
-  ca: "Fitxer → Desa al teu ordinador (.sb3). Puja'l al teu Drive o envia-te'l.",
-  es: "Archivo → Guardar en tu ordenador (.sb3). Súbelo a tu Drive o mándatelo.",
+  ca: "Fitxer → Desa al teu ordinador (.sb3). Després envia-te'l per correu 📧.",
+  es: "Archivo → Guardar en tu ordenador (.sb3). Luego envíatelo por correo 📧.",
 };
 const GUARDAR_ARCADE = {
-  ca: "Botó Comparteix → copia l'enllaç i desa'l al teu correu o Drive.",
-  es: "Botón Compartir → copia el enlace y guárdalo en tu correo o Drive.",
+  ca: "Botó Comparteix → copia l'enllaç i envia-te'l per correu 📧.",
+  es: "Botón Compartir → copia el enlace y envíatelo por correo 📧.",
 };
 const GUARDAR_MC = {
-  ca: "Code Builder → Comparteix → copia l'enllaç. L'ordinador s'esborra en apagar-lo!",
-  es: "Code Builder → Compartir → copia el enlace. ¡El ordenador se borra al apagar!",
+  ca: "Code Builder → Comparteix → copia l'enllaç i envia-te'l per correu 📧. L'ordinador s'esborra!",
+  es: "Code Builder → Compartir → copia el enlace y envíatelo por correo 📧. ¡El ordenador se borra!",
 };
 
 window.SESIONES = [
@@ -142,7 +142,10 @@ window.SESIONES = [
       { ca: "Arregla'l i apunta cada bug caçat.", es: "Arréglalo y apunta cada bug cazado." },
     ],
     botones: [ARCADE, SCRATCH],
-    guardar: { ca: "Desa la versió ARREGLADA amb un altre nom.", es: "Guarda la versión ARREGLADA con otro nombre." },
+    guardar: {
+      ca: "Desa la versió ARREGLADA amb un altre nom i envia-te-la per correu 📧.",
+      es: "Guarda la versión ARREGLADA con otro nombre y envíatela por correo 📧.",
+    },
     reto: {
       ca: "Trenca tu un projecte (1 bug amagat) i passa'l a un company.",
       es: "Rompe tú un proyecto (1 bug escondido) y pásaselo a un compi.",

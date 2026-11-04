@@ -51,6 +51,29 @@
     commit: "«Commit changes». En ~1 min, recarregueu (F5).",
     truco: "Truc: amb modo \"calendario\" no has de tocar res cada dia.",
     salirVista: "Surt de la vista prèvia",
+    comoCorreo: "📧 Com enviar-t'ho per correu ↓",
+    correoTitulo: "📧 Desa-ho al teu correu",
+    correoEtiqueta: "Sempre funciona",
+    correoArchivo: "📎 Un arxiu (.sb3, .mkcd, .png)",
+    pasosArchivo: [
+      "Desa l'arxiu a l'ordinador (va a la carpeta Baixades).",
+      "Obre el teu correu en una altra pestanya (Gmail, Outlook…).",
+      "Prem «Redacta» o «Correu nou». A «Per a», posa el TEU correu.",
+      "A «Assumpte», el nom del joc i la data.",
+      "Prem 📎 «Adjunta» i tria l'arxiu de Baixades.",
+      "Espera que es pugi del tot i prem «Envia».",
+    ],
+    casaArchivo: "A casa: obre el correu, baixa l'arxiu i obre'l. A Scratch: Fitxer → Carrega des del teu ordinador.",
+    correoEnlace: "🔗 Un enllaç (Arcade, Minecraft, Code.org)",
+    pasosEnlace: [
+      "Copia l'enllaç (Comparteix → Copia).",
+      "Obre el teu correu en una altra pestanya (Gmail, Outlook…).",
+      "Prem «Redacta» o «Correu nou». A «Per a», posa el TEU correu.",
+      "Enganxa l'enllaç al missatge (Ctrl+V). A «Assumpte», el nom del joc.",
+      "Prem «Envia».",
+    ],
+    casaEnlace: "A casa: obre el correu i prem l'enllaç.",
+    correoSalir: "🚪 En acabar, tanca la sessió del correu: l'ordinador és de tothom.",
   };
 
   const ES = {
@@ -99,6 +122,29 @@
     commit: "«Commit changes». En ~1 min, recargad (F5).",
     truco: "Truco: con modo \"calendario\" no tienes que tocar nada cada día.",
     salirVista: "Salir de la vista previa",
+    comoCorreo: "📧 Cómo enviártelo por correo ↓",
+    correoTitulo: "📧 Guárdalo en tu correo",
+    correoEtiqueta: "Siempre funciona",
+    correoArchivo: "📎 Un archivo (.sb3, .mkcd, .png)",
+    pasosArchivo: [
+      "Guarda el archivo en el ordenador (va a la carpeta Descargas).",
+      "Abre tu correo en otra pestaña (Gmail, Outlook…).",
+      "Pulsa «Redactar» o «Nuevo correo». En «Para», pon TU correo.",
+      "En «Asunto», el nombre del juego y la fecha.",
+      "Pulsa 📎 «Adjuntar» y elige el archivo de Descargas.",
+      "Espera a que se suba del todo y pulsa «Enviar».",
+    ],
+    casaArchivo: "En casa: abre el correo, descarga el archivo y ábrelo. En Scratch: Archivo → Cargar desde tu ordenador.",
+    correoEnlace: "🔗 Un enlace (Arcade, Minecraft, Code.org)",
+    pasosEnlace: [
+      "Copia el enlace (Compartir → Copiar).",
+      "Abre tu correo en otra pestaña (Gmail, Outlook…).",
+      "Pulsa «Redactar» o «Nuevo correo». En «Para», pon TU correo.",
+      "Pega el enlace en el mensaje (Ctrl+V). En «Asunto», el nombre del juego.",
+      "Pulsa «Enviar».",
+    ],
+    casaEnlace: "En casa: abre el correo y pulsa el enlace.",
+    correoSalir: "🚪 Al acabar, cierra la sesión del correo: el ordenador es de todos.",
   };
 
   const DICC = { ca: CA, es: ES };
