@@ -8,6 +8,8 @@
   const ZONA = window.ZONA_AUTONOMA;
   const TOTAL = SESIONES.length;
   const { t, tx } = window.I18N;
+  // Con solo espacios no cuenta: si no, salía el botón con un enlace vacío (QA, H-04).
+  const CARPETA = String(CFG.carpetaUrl ?? "").trim();
 
   // localStorage puede fallar (modo incógnito, aula bloqueada): nunca rompe la página.
   const almacen = {
@@ -119,7 +121,7 @@
         h("div", { class: "aviso guardar" }, h("strong", null, t("antesDeIrte")), tx(s.guardar),
           // `correo: false` (Code.org): guarda con la sesión, no hay archivo ni enlace que llevarse.
           s.correo !== false && h("div", { class: "guardar-donde" },
-            CFG.carpetaUrl && h("a", { class: "btn-carpeta", href: CFG.carpetaUrl, target: "_blank", rel: "noopener" }, t("subirCarpeta")),
+            CARPETA && h("a", { class: "btn-carpeta", href: CARPETA, target: "_blank", rel: "noopener" }, t("subirCarpeta")),
             h("a", { class: "enlace-correo", href: "#correo" }, t("comoCorreo")))),
         h("div", { class: "aviso reto" }, h("strong", null, t("retoExtra")), tx(s.reto)),
       ),
@@ -225,8 +227,8 @@
   function pintarCabecera() {
     document.getElementById("nombre-taller").textContent = CFG.nombreTaller;
     const pieCarpeta = document.getElementById("pie-carpeta");
-    pieCarpeta.hidden = !CFG.carpetaUrl;
-    if (CFG.carpetaUrl) pieCarpeta.href = CFG.carpetaUrl;
+    pieCarpeta.hidden = !CARPETA;
+    if (CARPETA) pieCarpeta.href = CARPETA;
     const n = sesionDeHoy();
     document.getElementById("xp-sesion").textContent = t("sesion", n);
     document.getElementById("xp-relleno").style.width = (n / TOTAL) * 100 + "%";

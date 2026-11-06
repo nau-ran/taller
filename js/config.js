@@ -16,7 +16,7 @@ window.PORTAL_CONFIG = {
   sesionActiva: 1,
 
   // Solo en modo "calendario": fecha (AAAA-MM-DD) en que se abre cada sesión.
-  // Antes del día 1 se ve la 1 como «hoy» para que nunca salga vacío.
+  // Antes del día 1 se ve la 1 como «propera missió» para que nunca salga vacío.
   calendario: {
     1: "2027-01-14",
     2: "2027-01-21",
