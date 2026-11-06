@@ -43,7 +43,7 @@ window.PORTAL_CONFIG = {
   // (la pide en tu terminal y escribe esta línea). La huella se ve en el código, así
   // que la clave es larga; aun así, el panel solo sirve para que nadie toque sin
   // querer: lo que cambia es la vista previa de ESE navegador.
-  claveProfeSha256: "",
+  claveProfeSha256: "922c7a7daa381e1648e30e3ff781f39eb2f7daa2789487a2781b939021c77003",
 
   // Tu carpeta del taller (botón 💾 en «Antes de irte» y en el pie).
   carpetaUrl: "https://taller.nauran.dev/",
