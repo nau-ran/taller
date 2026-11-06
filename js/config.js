@@ -38,10 +38,15 @@ window.PORTAL_CONFIG = {
   // Zona Autónoma para los que acaban antes: true | false.
   zonaAutonoma: true,
 
-  // Clave del panel del profe (botón 🔧 abajo del todo).
-  // OJO: es una web estática; quien lea el código fuente la ve.
-  // Sirve para que nadie toque sin querer, no como seguridad.
-  claveProfe: "profe2026",
+  // Clave del panel del profe (botón 🔧 abajo del todo). Aquí va solo su huella
+  // SHA-256, no la clave. Para cambiarla: `bash herramientas/nueva-clave-profe.sh`
+  // (la pide en tu terminal y escribe esta línea). La huella se ve en el código, así
+  // que la clave es larga; aun así, el panel solo sirve para que nadie toque sin
+  // querer: lo que cambia es la vista previa de ESE navegador.
+  claveProfeSha256: "",
+
+  // Tu carpeta del taller (botón 💾 en «Antes de irte» y en el pie).
+  carpetaUrl: "https://taller.nauran.dev/",
 
   // Enlace para editar ESTE fichero en GitHub (sale en el panel del profe).
   // Apunta a nau-ran/taller.

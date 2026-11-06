@@ -50,6 +50,17 @@
     return Math.min(TOTAL, Math.max(1, Number(CFG.sesionActiva) || 1));
   }
 
+  // ¿La sesión n es la de hoy, la última que pasó o la próxima (antes del curso)?
+  // Solo en modo calendario; con la vista previa del profe, siempre «hoy».
+  function cuandoEs(n) {
+    const f = CFG.calendario?.[n];
+    if (CFG.modo !== "calendario" || vistaProfe() || !f) return "hoy";
+    const hoy = hoyISO();
+    return hoy === f ? "hoy" : hoy > f ? "ultima" : "proxima";
+  }
+  const ETIQUETA = { hoy: "misionHoy", ultima: "ultimaMision", proxima: "proximaMision" };
+  const MARCA_MAPA = { hoy: "hoy", ultima: "ultimaCorta", proxima: "proximaCorta" };
+
   // La vista previa del profe solo vive en ESTE navegador.
   const vistaProfe = () => almacen.leer("profe.vista", null);
   const sesionDeHoy = () => vistaProfe()?.sesion ?? sesionDeHoyPublicada();
@@ -89,7 +100,7 @@
       h("div", { class: "mision-cabecera" },
         h("div", { class: "mision-icono", "aria-hidden": "true" }, s.icono),
         h("div", null,
-          h("div", { class: "mision-etiqueta" }, enRepaso ? t("repaso", n) : t("misionHoy", n)),
+          h("div", { class: "mision-etiqueta" }, enRepaso ? t("repaso", n) : t(ETIQUETA[cuandoEs(n)], n)),
           h("h1", { class: "mision-titulo" }, tx(s.titulo)),
           h("div", { class: "mision-plataforma" }, tx(s.plataforma)),
         ),
@@ -106,7 +117,10 @@
       s.nota && h("div", { class: "aviso nota" }, h("strong", null, "ℹ️ "), tx(s.nota)),
       h("div", { class: "extras" },
         h("div", { class: "aviso guardar" }, h("strong", null, t("antesDeIrte")), tx(s.guardar),
-          s.correo !== false && [h("br"), h("a", { class: "enlace-correo", href: "#correo" }, t("comoCorreo"))]),
+          // `correo: false` (Code.org): guarda con la sesión, no hay archivo ni enlace que llevarse.
+          s.correo !== false && h("div", { class: "guardar-donde" },
+            CFG.carpetaUrl && h("a", { class: "btn-carpeta", href: CFG.carpetaUrl, target: "_blank", rel: "noopener" }, t("subirCarpeta")),
+            h("a", { class: "enlace-correo", href: "#correo" }, t("comoCorreo")))),
         h("div", { class: "aviso reto" }, h("strong", null, t("retoExtra")), tx(s.reto)),
       ),
     ].filter(Boolean));
@@ -158,7 +172,7 @@
         h("div", { class: "tarjeta-num" }, s.n),
         h("div", { class: "tarjeta-icono" }, s.icono),
         h("div", { class: "tarjeta-titulo" }, tx(s.titulo)),
-        h("div", { class: "tarjeta-sub" }, esHoy ? t("hoy") : t("repasar")),
+        h("div", { class: "tarjeta-sub" }, esHoy ? t(MARCA_MAPA[cuandoEs(s.n)]) : t("repasar")),
       );
     });
     document.getElementById("mapa").replaceChildren(...tarjetas.filter(Boolean));
@@ -210,6 +224,9 @@
   // ── Cabecera: barra de XP ────────────────────────────────────
   function pintarCabecera() {
     document.getElementById("nombre-taller").textContent = CFG.nombreTaller;
+    const pieCarpeta = document.getElementById("pie-carpeta");
+    pieCarpeta.hidden = !CFG.carpetaUrl;
+    if (CFG.carpetaUrl) pieCarpeta.href = CFG.carpetaUrl;
     const n = sesionDeHoy();
     document.getElementById("xp-sesion").textContent = t("sesion", n);
     document.getElementById("xp-relleno").style.width = (n / TOTAL) * 100 + "%";
@@ -300,8 +317,13 @@
 
     const entrada = h("input", { type: "password", class: "campo", placeholder: t("claveProfe"), autocomplete: "off" });
     const error = h("div", { class: "error" });
-    const entrar = () => {
-      if (entrada.value === CFG.claveProfe) pintarPanel(dlg, cerrar);
+    // config.js guarda la huella SHA-256 de la clave, no la clave (herramientas/nueva-clave-profe.sh).
+    const entrar = async () => {
+      if (!CFG.claveProfeSha256) { error.textContent = t("sinClave"); return; }
+      if (!globalThis.crypto?.subtle) { error.textContent = t("sinCripto"); return; }
+      const bytes = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(entrada.value));
+      const huella = [...new Uint8Array(bytes)].map((x) => x.toString(16).padStart(2, "0")).join("");
+      if (huella === String(CFG.claveProfeSha256).toLowerCase()) pintarPanel(dlg, cerrar);
       else { error.textContent = t("claveIncorrecta"); entrada.select(); }
     };
     entrada.addEventListener("keydown", (e) => { if (e.key === "Enter") entrar(); });

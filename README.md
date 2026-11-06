@@ -22,3 +22,21 @@ Sube el `?v=` en las cinco líneas de [`index.html`](index.html) (`css/estilos.c
 eso, un navegador puede juntar el `index.html` nuevo con un JS viejo. `config.js` no hace
 falta: cambiarlo cada día no cambia el resto.
 Panel del profe: botón 🔧 del pie, o `?profe` al final del enlace.
+
+## La clave del panel del profe
+
+En `js/config.js` no está la clave, solo su huella SHA-256 (`claveProfeSha256`). Para
+cambiarla, en un clon del repo:
+
+```bash
+bash herramientas/nueva-clave-profe.sh
+```
+
+Te la pide en la terminal (no se ve), escribe la huella en `config.js` y no guarda la clave
+en ningún sitio: apúntala en tu gestor de contraseñas. Luego, commit y push. Como la huella
+se ve, la clave tiene que ser larga (16 o más; vale una frase).
+
+## Botón de la carpeta
+
+`carpetaUrl` en `js/config.js` (por defecto `https://taller.nauran.dev/`): sale en «Abans de
+marxar» de cada misión que tiene algo que llevarse y en el pie. Vacío, no sale.

@@ -176,6 +176,15 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .aviso.guardar { border-color: var(--ambar); }
 .enlace-correo { display: inline-block; margin-top: 8px; font-weight: 800; color: var(--ambar); }
 .pie-enlace { color: inherit; }
+/* Dónde llevarse el trabajo: la carpeta del taller (botón) y el correo (guía). */
+.guardar-donde { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; margin-top: 12px; }
+.guardar-donde .enlace-correo { margin-top: 0; }
+.btn-carpeta {
+  display: inline-flex; align-items: center; gap: 6px; padding: 9px 16px; border-radius: 99px;
+  border: 1px solid var(--cian); color: var(--cian); background: color-mix(in srgb, var(--cian) 10%, transparent);
+  font-weight: 800; font-size: 15px; text-decoration: none; white-space: nowrap;
+}
+.btn-carpeta:hover { background: color-mix(in srgb, var(--cian) 22%, transparent); }
 
 /* ── Guardar en el correo ─────────────────── */
 .correo { padding: 24px; border-radius: calc(var(--radio) + 6px); background: var(--panel); border: 1px solid var(--borde); scroll-margin-top: 90px; }
