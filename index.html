@@ -6,12 +6,14 @@
   <title>Code Lab · Portal</title>
   <meta name="description" content="Portal central del taller de programació" data-t-content="descripcion">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
-  <link rel="stylesheet" href="css/estilos.css">
-  <!-- El orden importa: config → contenido → textos → lógica -->
-  <script src="js/config.js" defer></script>
-  <script src="js/sesiones.js" defer></script>
-  <script src="js/textos.js" defer></script>
-  <script src="js/app.js" defer></script>
+  <link rel="stylesheet" href="css/estilos.css?v=2026-11-06">
+  <!-- El orden importa: config → contenido → textos → lógica. El ?v= va igual en los cinco y
+       se cambia con cada versión: GitHub Pages cachea 10 min y, sin él, un navegador podía
+       mezclar el index nuevo con un JS viejo (QA del catalán, H-09). -->
+  <script src="js/config.js?v=2026-11-06" defer></script>
+  <script src="js/sesiones.js?v=2026-11-06" defer></script>
+  <script src="js/textos.js?v=2026-11-06" defer></script>
+  <script src="js/app.js?v=2026-11-06" defer></script>
 </head>
 <body>
   <div id="banner-profe" class="banner-profe" hidden></div>
@@ -63,7 +65,7 @@
   </main>
 
   <footer class="pie">
-    <span><span data-t="seBorran">Els ordinadors s'esborren en apagar-los:</span> <strong data-t="guardaEnlace">desa sempre el teu enllaç</strong> 💾</span>
+    <span><span data-t="seBorran">Els ordinadors s'esborren en apagar-los:</span> <a class="pie-enlace" href="#correo"><strong data-t="guardaEnlace">desa sempre la teva feina</strong></a> 💾</span>
     <button id="abrir-profe" class="btn-profe" type="button" title="Tauler del profe" data-t-title="panelProfe" data-t-aria="panelProfe" aria-label="Tauler del profe">🔧</button>
   </footer>
 

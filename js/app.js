@@ -106,7 +106,7 @@
       s.nota && h("div", { class: "aviso nota" }, h("strong", null, "ℹ️ "), tx(s.nota)),
       h("div", { class: "extras" },
         h("div", { class: "aviso guardar" }, h("strong", null, t("antesDeIrte")), tx(s.guardar),
-          h("br"), h("a", { class: "enlace-correo", href: "#correo" }, t("comoCorreo"))),
+          s.correo !== false && [h("br"), h("a", { class: "enlace-correo", href: "#correo" }, t("comoCorreo"))]),
         h("div", { class: "aviso reto" }, h("strong", null, t("retoExtra")), tx(s.reto)),
       ),
     ].filter(Boolean));
@@ -340,7 +340,7 @@
       },
     }, t("copiar"));
 
-    dlg.replaceChildren(cerrar,
+    dlg.replaceChildren(...[cerrar,
       h("h2", null, t("tituloPanel")),
       h("p", { class: "panel-info" }, t("publicado"), h("code", null, linea)),
 
@@ -363,7 +363,7 @@
       ),
       h("p", { class: "panel-info" }, t("truco")),
       vp && h("button", { type: "button", class: "btn-gigante secundario", onclick: () => { almacen.escribir("profe.vista", null); pintarTodo(); dlg.close(); } }, t("salirVista")),
-    );
+    ].filter(Boolean));
   }
 
   // ── Arranque ─────────────────────────────────────────────────
@@ -378,6 +378,9 @@
         if (!window.I18N.fijar(b.dataset.idioma)) return;
         const dlg = document.getElementById("dialogo-profe");
         if (dlg.open) dlg.close();
+        // «Temps!» se queda 30 s: que también cambie de idioma.
+        const sprint = document.getElementById("sprint-btn");
+        if (sprint.classList.contains("fin")) sprint.textContent = t("tiempo");
         pintarTodo();
       });
     }

@@ -51,11 +51,12 @@ window.SESIONES = [
       { texto: { ca: "Minecraft Aventurer", es: "Minecraft Aventurero" }, url: "https://studio.code.org/s/mc", icono: "⛏️" },
       { texto: { ca: "Més trencaclosques (Hora del Codi)", es: "Más puzles (Hora del Código)" }, url: "https://hourofcode.com/es/learn", icono: "🧠", secundario: true },
     ],
+    correo: false, // Code.org guarda con la sesión iniciada: no hay archivo ni enlace que mandarse
     guardar: {
       ca: "Code.org només desa si inicies sessió. Si no, apunta el nivell on vas.",
       es: "Code.org guarda solo si inicias sesión. Si no, apunta el nivel en el que vas.",
     },
-    reto: { ca: "Torna a fer un nivell amb els mínims blocs possibles.", es: "Rehaz un nivel con el mínimo de bloques posible." },
+    reto: { ca: "Torna a fer un nivell amb el mínim de blocs possible.", es: "Rehaz un nivel con el mínimo de bloques posible." },
   },
   {
     n: 3, icono: "👾", color: "lima",
@@ -157,7 +158,7 @@ window.SESIONES = [
     titulo: { ca: "La Gran Exhibició", es: "La Gran Exhibición" },
     objetivo: { ca: "Ensenya el teu millor joc i juga als dels altres.", es: "Enseña tu mejor juego y juega los de los demás." },
     pasos: [
-      { ca: "Tria el teu millor projecte i polleix UNA cosa.", es: "Elige tu mejor proyecto y pule UNA cosa." },
+      { ca: "Tria el teu millor projecte i poleix UNA cosa.", es: "Elige tu mejor proyecto y pule UNA cosa." },
       { ca: "Prepara 1 frase: què fa i què va ser difícil.", es: "Prepara 1 frase: qué hace y qué fue difícil." },
       { ca: "Ronda de jocs i votacions 🏆.", es: "Ronda de juegos y votaciones 🏆." },
     ],
