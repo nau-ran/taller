@@ -273,12 +273,14 @@ code { font: 700 .92em ui-monospace, Consolas, monospace; padding: 2px 6px; bord
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
 
+/* Por debajo de 570 px la cabecera tiene dos filas: el salto a #correo deja sitio. */
+@media (max-width: 570px) { .correo { scroll-margin-top: 150px; } }
+
 @media (max-width: 680px) {
   .cabecera { gap: 12px; padding: 12px 16px; }
   /* Dos filas: marca y Sprint arriba; progreso y CA | ES abajo (QA del catalán, H-01). */
   .xp { order: 3; flex: 1 1 140px; min-width: 0; max-width: none; }
   .idiomas { order: 4; }
-  .correo { scroll-margin-top: 150px; }
   .correo-columnas { grid-template-columns: 1fr; }
   .btn-gigante { width: 100%; }
   .btn-volver { margin-left: 0; }

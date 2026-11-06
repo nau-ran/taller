@@ -14,4 +14,11 @@ El contenido de las sesiones está en [`js/sesiones.js`](js/sesiones.js), cada t
 catalán y en castellano: `{ ca: "…", es: "…" }`. El portal sale en catalán y el botón
 CA | ES de arriba lo cambia (se recuerda en ese navegador). Los textos fijos del portal
 están en [`js/textos.js`](js/textos.js).
+
+## Al publicar un cambio de CSS o JS
+
+Sube el `?v=` en las cinco líneas de [`index.html`](index.html) (`css/estilos.css` y los cuatro
+`js/…`), las cinco con el mismo valor (la fecha vale). GitHub Pages cachea 10 minutos y, sin
+eso, un navegador puede juntar el `index.html` nuevo con un JS viejo. `config.js` no hace
+falta: cambiarlo cada día no cambia el resto.
 Panel del profe: botón 🔧 del pie, o `?profe` al final del enlace.
