@@ -200,7 +200,7 @@ window.ZONA_AUTONOMA = {
     { icono: "🎵", nivel: 1, texto: { ca: "Scratch: un piano amb 5 tecles del teclat.", es: "Scratch: un piano con 5 teclas del teclado." } },
     { icono: "🌌", nivel: 2, texto: { ca: "Arcade: fons que es mou (scroll) com en un joc de naus.", es: "Arcade: fondo que se mueve (scroll) como en un juego de naves." } },
     { icono: "❤️", nivel: 2, texto: { ca: "Arcade: power-up que dona una vida extra.", es: "Arcade: power-up que da una vida extra." } },
-    { icono: "⛏️", nivel: 2, texto: { ca: "Code.org Minecraft: l'Agent (botó de la missió 2), fins al nivell 12.", es: "Code.org Minecraft: el Agente (botón de la misión 2), hasta el nivel 12." } },
+    { icono: "⛏️", nivel: 2, texto: { ca: "Code.org: «El Viaje del Héroe» (l'Agent de Minecraft), fins al nivell 12.", es: "Code.org: «El Viaje del Héroe» (el Agente de Minecraft), hasta el nivel 12." } },
     { icono: "🧠", nivel: 3, texto: { ca: "Qualsevol: un cap final amb barra de vida.", es: "Cualquiera: un jefe final con barra de vida." } },
     { icono: "💾", nivel: 3, texto: { ca: "Arcade: desa el rècord (high score) entre partides.", es: "Arcade: guarda el récord (high score) entre partidas." } },
   ],
