@@ -62,7 +62,7 @@
     comoCorreo: "📧 Com enviar-t'ho per correu ↓",
     correoTitulo: "📧 Desa-ho al teu correu",
     correoEtiqueta: "Sempre funciona",
-    correoArchivo: "📎 Un arxiu (.sb3, .mkcd, .png)",
+    correoArchivo: "📎 Un arxiu (.sb3, .png)",
     pasosArchivo: [
       "Desa l'arxiu a l'ordinador (va a la carpeta Baixades).",
       "Obre el teu correu en una altra pestanya (Gmail, Outlook…).",
@@ -71,8 +71,8 @@
       "Prem 📎 «Adjunta» i tria l'arxiu de Baixades.",
       "Espera que es pugi del tot i prem «Envia».",
     ],
-    casaArchivo: "A casa: obre el correu, baixa l'arxiu i obre'l. A Scratch: Fitxer → Carrega des del teu ordinador.",
-    correoEnlace: "🔗 Un enllaç (Arcade, Minecraft, Code.org)",
+    casaArchivo: "A casa: obre el correu, baixa l'arxiu i obre'l. A Scratch: Fitxer → Carrega des del teu ordinador. A Arcade: Importar → la imatge .png.",
+    correoEnlace: "🔗 Un enllaç (Arcade, Code.org)",
     pasosEnlace: [
       "Copia l'enllaç (Comparteix → Copia).",
       "Obre el teu correu en una altra pestanya (Gmail, Outlook…).",
@@ -141,7 +141,7 @@
     comoCorreo: "📧 Cómo enviártelo por correo ↓",
     correoTitulo: "📧 Guárdalo en tu correo",
     correoEtiqueta: "Siempre funciona",
-    correoArchivo: "📎 Un archivo (.sb3, .mkcd, .png)",
+    correoArchivo: "📎 Un archivo (.sb3, .png)",
     pasosArchivo: [
       "Guarda el archivo en el ordenador (va a la carpeta Descargas).",
       "Abre tu correo en otra pestaña (Gmail, Outlook…).",
@@ -150,8 +150,8 @@
       "Pulsa 📎 «Adjuntar» y elige el archivo de Descargas.",
       "Espera a que se suba del todo y pulsa «Enviar».",
     ],
-    casaArchivo: "En casa: abre el correo, descarga el archivo y ábrelo. En Scratch: Archivo → Cargar desde tu ordenador.",
-    correoEnlace: "🔗 Un enlace (Arcade, Minecraft, Code.org)",
+    casaArchivo: "En casa: abre el correo, descarga el archivo y ábrelo. En Scratch: Archivo → Cargar desde tu ordenador. En Arcade: Importar → la imagen .png.",
+    correoEnlace: "🔗 Un enlace (Arcade, Code.org)",
     pasosEnlace: [
       "Copia el enlace (Compartir → Copiar).",
       "Abre tu correo en otra pestaña (Gmail, Outlook…).",
