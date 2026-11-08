@@ -15,10 +15,17 @@ const GUARDAR_SCRATCH = {
   es: "Archivo → Guardar en tu ordenador (.sb3). Luego envíatelo por correo 📧.",
 };
 // Arcade guarda el proyecto dentro de una imagen .png (la carpeta la acepta) y se recupera
-// con Importar → «Abrir archivos de su computadora», o arrastrándola al editor.
+// con Importar → «Abrir archivos de su computadora», o arrastrándola al editor. El nombre del
+// fichero sale del del proyecto: con emojis o muy largo, la carpeta no lo acepta (QA H-07).
+// El botón grande «Descargar» no guarda: pide hardware (QA H-05).
 const GUARDAR_ARCADE = {
-  ca: "Botó 💾 al costat del nom → es baixa una imatge .png. Puja-la a la teva carpeta.",
-  es: "Botón 💾 junto al nombre → se descarga una imagen .png. Súbela a tu carpeta.",
+  ca: "Nom curt i sense emojis. 💾 al costat del nom (no «Descargar») → es baixa un .png. Puja'l a la teva carpeta.",
+  es: "Nombre corto y sin emojis. 💾 junto al nombre (no «Descargar») → se descarga un .png. Súbelo a tu carpeta.",
+};
+// Code.org recuerda el idioma en una cookie que manda más que /es/ (QA H-01).
+const NOTA_CODEORG = {
+  ca: "Si Code.org surt en anglès: a baix de tot, tria «Español (España)».",
+  es: "Si Code.org sale en inglés: abajo del todo, elige «Español (España)».",
 };
 
 window.SESIONES = [
@@ -48,13 +55,14 @@ window.SESIONES = [
     ],
     botones: [
       { texto: { ca: "Minecraft Aventurer", es: "Minecraft Aventurero" }, url: "https://studio.code.org/es/s/mc", icono: "⛏️" },
-      { texto: { ca: "Més trencaclosques (Hora del Codi)", es: "Más puzles (Hora del Código)" }, url: "https://hourofcode.com/es/learn", icono: "🧠", secundario: true },
+      { texto: { ca: "Més trencaclosques: l'Agent", es: "Más puzles: el Agente" }, url: "https://studio.code.org/es/s/hero/lessons/1/levels/1", icono: "🧠", secundario: true },
     ],
     correo: false, // Code.org guarda con la sesión iniciada: no hay archivo ni enlace que mandarse
     guardar: {
       ca: "Code.org només desa si inicies sessió. Si no, apunta el nivell on vas.",
       es: "Code.org guarda solo si inicias sesión. Si no, apunta el nivel en el que vas.",
     },
+    nota: NOTA_CODEORG,
     reto: { ca: "Torna a fer un nivell amb el mínim de blocs possible.", es: "Rehaz un nivel con el mínimo de bloques posible." },
   },
   {
@@ -67,7 +75,7 @@ window.SESIONES = [
       { ca: "«Mou amb botons» → ja camina!", es: "«Mover con botones» → ¡ya anda!" },
       { ca: "Menjar que apareix + marcador de punts.", es: "Comida que aparece + marcador de puntos." },
     ],
-    botones: [ARCADE, { texto: { ca: "Editor de pixel art", es: "Editor de pixel art" }, url: "https://arcade.makecode.com/?lang=es-ES", icono: "🎨", secundario: true }],
+    botones: [ARCADE],
     guardar: GUARDAR_ARCADE,
     reto: { ca: "Afegeix un enemic que et persegueixi i 3 vides.", es: "Añade un enemigo que te persiga y 3 vidas." },
   },
@@ -88,9 +96,10 @@ window.SESIONES = [
     // Sin cuenta, «Terminar» del nivel 12 da un enlace studio.code.org/c/… que reproduce el
     // juego y, con «Cómo funciona», devuelve el programa para seguir (probado el 8-nov-2026).
     guardar: {
-      ca: "Nivell 12 → «Terminar» → copia l'enllaç. Desa'l a la teva carpeta.",
-      es: "Nivel 12 → «Terminar» → copia el enlace. Guárdalo en tu carpeta.",
+      ca: "Nivell 12 → «Terminar» → «Copiar enlace al proyecto». Desa'l a la teva carpeta.",
+      es: "Nivel 12 → «Terminar» → «Copiar enlace al proyecto». Guárdalo en tu carpeta.",
     },
+    nota: NOTA_CODEORG,
     reto: { ca: "Que ploguin pollastres 🐔 quan es faci de nit.", es: "Que lluevan pollos 🐔 cuando se haga de noche." },
   },
   {
@@ -106,8 +115,8 @@ window.SESIONES = [
     botones: [ARCADE],
     guardar: GUARDAR_ARCADE,
     nota: {
-      ca: "La lava i les punxes són a la galeria de rajoles, a «Miscellaneous».",
-      es: "La lava y los pinchos están en la galería de teselas, en «Miscellaneous».",
+      ca: "Lava i punxes: editor del mapa → «Gallery» → «Miscellaneous», pàgina 2.",
+      es: "Lava y pinchos: editor del mapa → «Gallery» → «Miscellaneous», página 2.",
     },
     reto: { ca: "Paranys que s'obren i es tanquen cada 2 segons.", es: "Trampas que se abren y se cierran cada 2 segundos." },
   },
@@ -155,8 +164,8 @@ window.SESIONES = [
     ],
     botones: [ARCADE, SCRATCH],
     guardar: {
-      ca: "Desa la versió ARREGLADA amb un altre nom i envia-te-la per correu 📧.",
-      es: "Guarda la versión ARREGLADA con otro nombre y envíatela por correo 📧.",
+      ca: "Desa la versió ARREGLADA amb un altre nom i puja-la a la teva carpeta.",
+      es: "Guarda la versión ARREGLADA con otro nombre y súbela a tu carpeta.",
     },
     reto: {
       ca: "Trenca tu un projecte (1 bug amagat) i passa'l a un company.",
@@ -167,19 +176,19 @@ window.SESIONES = [
     n: 9, icono: "🎉", color: "lima",
     plataforma: { ca: "Tot!", es: "¡Todo!" },
     titulo: { ca: "La Gran Exhibició", es: "La Gran Exhibición" },
-    objetivo: { ca: "Ensenya el teu millor joc i juga als dels altres.", es: "Enseña tu mejor juego y juega los de los demás." },
+    objetivo: { ca: "Ensenya el teu joc i juga als dels altres.", es: "Enseña tu juego y juega a los de los demás." },
     pasos: [
-      { ca: "Tria el teu millor projecte i poleix UNA cosa.", es: "Elige tu mejor proyecto y pule UNA cosa." },
-      { ca: "Prepara 1 frase: què fa i què va ser difícil.", es: "Prepara 1 frase: qué hace y qué fue difícil." },
+      { ca: "Baixa el joc de la carpeta. Poleix UNA cosa.", es: "Baja el juego de la carpeta. Pule UNA cosa." },
+      { ca: "Prepara 1 frase: què fa i què va costar.", es: "Prepara 1 frase: qué hace y qué costó." },
       { ca: "Ronda de jocs i votacions 🏆.", es: "Ronda de juegos y votaciones 🏆." },
     ],
     botones: [
-      { texto: { ca: "Les meves coses a Scratch", es: "Mis cosas en Scratch" }, url: "https://scratch.mit.edu/mystuff/", icono: "🐱" },
+      SCRATCH,
       ARCADE,
     ],
     guardar: {
-      ca: "Avui NO es perd res: comparteix l'enllaç del teu joc amb la teva família.",
-      es: "Hoy NO se pierde nada: comparte el enlace de tu juego con tu familia.",
+      ca: "Desa la versió final a la teva carpeta. Des de casa també hi pots entrar 💾.",
+      es: "Guarda la versión final en tu carpeta. Desde casa también puedes entrar 💾.",
     },
     reto: { ca: "Premi especial al bug més divertit del taller.", es: "Premio especial al bug más gracioso del taller." },
   },
@@ -191,7 +200,7 @@ window.ZONA_AUTONOMA = {
     { icono: "🎵", nivel: 1, texto: { ca: "Scratch: un piano amb 5 tecles del teclat.", es: "Scratch: un piano con 5 teclas del teclado." } },
     { icono: "🌌", nivel: 2, texto: { ca: "Arcade: fons que es mou (scroll) com en un joc de naus.", es: "Arcade: fondo que se mueve (scroll) como en un juego de naves." } },
     { icono: "❤️", nivel: 2, texto: { ca: "Arcade: power-up que dona una vida extra.", es: "Arcade: power-up que da una vida extra." } },
-    { icono: "⛏️", nivel: 2, texto: { ca: "Code.org Minecraft: l'Agent («El Viaje del Héroe»), fins al nivell 12.", es: "Code.org Minecraft: el Agente («El Viaje del Héroe»), hasta el nivel 12." } },
+    { icono: "⛏️", nivel: 2, texto: { ca: "Code.org Minecraft: l'Agent (botó de la missió 2), fins al nivell 12.", es: "Code.org Minecraft: el Agente (botón de la misión 2), hasta el nivel 12." } },
     { icono: "🧠", nivel: 3, texto: { ca: "Qualsevol: un cap final amb barra de vida.", es: "Cualquiera: un jefe final con barra de vida." } },
     { icono: "💾", nivel: 3, texto: { ca: "Arcade: desa el rècord (high score) entre partides.", es: "Arcade: guarda el récord (high score) entre partidas." } },
   ],

@@ -62,7 +62,7 @@
     comoCorreo: "📧 Com enviar-t'ho per correu ↓",
     correoTitulo: "📧 Desa-ho al teu correu",
     correoEtiqueta: "Sempre funciona",
-    correoArchivo: "📎 Un arxiu (.sb3, .png)",
+    correoArchivo: "📎 Un arxiu (.sb3 de Scratch, .png d'Arcade)",
     pasosArchivo: [
       "Desa l'arxiu a l'ordinador (va a la carpeta Baixades).",
       "Obre el teu correu en una altra pestanya (Gmail, Outlook…).",
@@ -72,9 +72,9 @@
       "Espera que es pugi del tot i prem «Envia».",
     ],
     casaArchivo: "A casa: obre el correu, baixa l'arxiu i obre'l. A Scratch: Fitxer → Carrega des del teu ordinador. A Arcade: Importar → la imatge .png.",
-    correoEnlace: "🔗 Un enllaç (Arcade, Code.org)",
+    correoEnlace: "🔗 Un enllaç (Code.org)",
     pasosEnlace: [
-      "Copia l'enllaç (Comparteix → Copia).",
+      "Copia l'enllaç («Terminar» → «Copiar enlace al proyecto»).",
       "Obre el teu correu en una altra pestanya (Gmail, Outlook…).",
       "Prem «Redacta» o «Correu nou». A «Per a», posa el TEU correu.",
       "Enganxa l'enllaç al missatge (Ctrl+V). A «Assumpte», el nom del joc.",
@@ -141,7 +141,7 @@
     comoCorreo: "📧 Cómo enviártelo por correo ↓",
     correoTitulo: "📧 Guárdalo en tu correo",
     correoEtiqueta: "Siempre funciona",
-    correoArchivo: "📎 Un archivo (.sb3, .png)",
+    correoArchivo: "📎 Un archivo (.sb3 de Scratch, .png de Arcade)",
     pasosArchivo: [
       "Guarda el archivo en el ordenador (va a la carpeta Descargas).",
       "Abre tu correo en otra pestaña (Gmail, Outlook…).",
@@ -151,9 +151,9 @@
       "Espera a que se suba del todo y pulsa «Enviar».",
     ],
     casaArchivo: "En casa: abre el correo, descarga el archivo y ábrelo. En Scratch: Archivo → Cargar desde tu ordenador. En Arcade: Importar → la imagen .png.",
-    correoEnlace: "🔗 Un enlace (Arcade, Code.org)",
+    correoEnlace: "🔗 Un enlace (Code.org)",
     pasosEnlace: [
-      "Copia el enlace (Compartir → Copiar).",
+      "Copia el enlace («Terminar» → «Copiar enlace al proyecto»).",
       "Abre tu correo en otra pestaña (Gmail, Outlook…).",
       "Pulsa «Redactar» o «Nuevo correo». En «Para», pon TU correo.",
       "Pega el enlace en el mensaje (Ctrl+V). En «Asunto», el nombre del juego.",
