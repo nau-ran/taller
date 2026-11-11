@@ -1,5 +1,5 @@
 // Contenido de las 9 sesiones y de la Zona Autónoma.
-// Regla de oro TDAH: una frase por objetivo, 3 pasos, frases de < 10 palabras.
+// Regla de oro: una frase por objetivo, 3 pasos, frases de < 10 palabras.
 // `color` es uno de: cian, magenta, lima, ambar, violeta, rojo.
 // Cada texto va en los dos idiomas: { ca: "…", es: "…" }. El portal sale en catalán
 // y el botón CA | ES de arriba lo pasa a castellano. Si un texto es igual en los dos
