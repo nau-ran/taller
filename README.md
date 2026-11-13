@@ -1,4 +1,4 @@
-# Code Lab · portal del taller
+# COAders · portal del taller
 
 Lo que abren los alumnos al llegar: **https://nau-ran.github.io/taller/**
 

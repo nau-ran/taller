@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────
 
 window.PORTAL_CONFIG = {
-  nombreTaller: "CODE LAB",
+  nombreTaller: "COAders",
 
   // "manual"     → manda `sesionActiva` (la cambias tú cada día).
   // "calendario" → se desbloquea sola el día que pongas en `calendario`.
